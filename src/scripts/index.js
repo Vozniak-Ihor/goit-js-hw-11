@@ -18,7 +18,6 @@ loadMoreBnt.refs.buttonEl.addEventListener('click', onClickButton);
 function onClickButtonSearch(event) {
   event.preventDefault();
 
-  loadMoreBnt.show();
   newsApiService.query = inputUl.value;
   // console.log(newsApiService.query);
   newsApiService.resetPage();
@@ -29,6 +28,7 @@ function onClickButton() {
   loadMoreBnt.disabled();
   newsApiService.fetchImages().then(images => {
     createImageList(images);
+    loadMoreBnt.show();
     loadMoreBnt.enable();
   });
 }
