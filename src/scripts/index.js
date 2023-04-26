@@ -14,6 +14,7 @@ buttonEl.addEventListener('click', onClickButton);
 function onClickButtonSearch(event) {
   event.preventDefault();
   
+
   newsApiService.query = inputUl.value
   // console.log(newsApiService.query);
   newsApiService.resetPage(); 
@@ -38,16 +39,17 @@ function createImageList(images) {
       }) => `<div class="photo-card">
   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
   <div class="info">
-    <p class="info-item">
+    <p class="info-item">likes
+    
       <b>${likes}</b>
     </p>
-    <p class="info-item">
+    <p class="info-item">views
       <b>${views}</b>
     </p>
-    <p class="info-item">
+    <p class="info-item">comments
       <b>${comments}</b>
     </p>
-    <p class="info-item">
+    <p class="info-item">downloads
       <b>${downloads}</b>
     </p>
   </div>

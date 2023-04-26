@@ -1,0 +1,93 @@
+/* Styles for search form */
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .input {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem 0 0 0.5rem;
+    margin-right: -2px;
+  }
+  .button {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 0.5rem 0.5rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0062cc;
+  }
+  
+  .load-more{
+    display: flex;
+ margin-right: auto;
+ margin-left: auto;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .load-more:hover{
+    background-color: #0062cc;
+  }
+  /* Styles for image list */
+  .ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .photo-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .photo-card:hover {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .photo-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .info {
+    padding: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .info-item {
+    font-size: 1.2rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-item b {
+    margin-right: 0.5rem;
+  }
+  
