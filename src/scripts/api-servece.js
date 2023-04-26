@@ -12,7 +12,7 @@ export default class NewsApiService {
 
     try {
       const response = await axios.get(
-        `https://pixabay.com/api/?key=${apiKey}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=5&page=${this.page}`
+        `https://pixabay.com/api/?key=${apiKey}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`
       );
       const data = await response.data;
       this.page += 1;

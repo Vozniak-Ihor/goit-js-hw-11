@@ -1,5 +1,7 @@
+import Notiflix from 'notiflix';
+
 import NewsApiService from './api-servece';
-import LoadMoreBnt from './loadMoreBnt'
+import LoadMoreBnt from './loadMoreBnt';
 const ul = document.querySelector('.ul');
 const inputUl = document.querySelector('.input');
 const formEl = document.querySelector('.search-form');
@@ -7,30 +9,27 @@ const formEl = document.querySelector('.search-form');
 
 const newsApiService = new NewsApiService();
 const loadMoreBnt = new LoadMoreBnt({
-  selector: '.load-more'
-})
+  selector: '.load-more',
+});
 
 formEl.addEventListener('submit', onClickButtonSearch);
 loadMoreBnt.refs.buttonEl.addEventListener('click', onClickButton);
 
 function onClickButtonSearch(event) {
   event.preventDefault();
-  
- loadMoreBnt.show()
-  newsApiService.query = inputUl.value
+
+  loadMoreBnt.show();
+  newsApiService.query = inputUl.value;
   // console.log(newsApiService.query);
   newsApiService.resetPage();
-  loadMoreBnt.disabled() 
-  newsApiService.fetchImages().then(images =>{
-    createImageList(images)
-    loadMoreBnt.enable()})
+  onClickButton();
 }
 
 function onClickButton() {
-  loadMoreBnt.disabled()
-  newsApiService.fetchImages().then(images =>{
-    createImageList(images)
-    loadMoreBnt.enable()
+  loadMoreBnt.disabled();
+  newsApiService.fetchImages().then(images => {
+    createImageList(images);
+    loadMoreBnt.enable();
   });
 }
 
@@ -67,4 +66,3 @@ function createImageList(images) {
     .join('');
   ul.innerHTML = html;
 }
-
