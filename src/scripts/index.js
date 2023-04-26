@@ -3,26 +3,25 @@
 import NewsApiService from './api-servece';
 const ul = document.querySelector('.ul');
 const inputUl = document.querySelector('.input');
-const buttonEl = document.querySelector('.button');
-const buttonEl2 = document.querySelector('.load-more');
+const formEl = document.querySelector('.search-form');
+const buttonEl = document.querySelector('.load-more');
 
 const newsApiService = new NewsApiService();
 
-inputUl.addEventListener('input', event => {
-  return event.currentTarget.value;
-});
-buttonEl.addEventListener('submit', onClickButton);
-buttonEl2.addEventListener('click', onClickButton2);
+formEl.addEventListener('submit', onClickButtonSearch);
+buttonEl.addEventListener('click', onClickButton);
 
-function onClickButton(event) {
-  event.preventDefault(); //не перезагружається
-  newsApiService.query = inputUl.value;
-  newsApiService.resetPage(); //тепер тільки 1 загружається сторінка
-  newsApiService.fetchImages();
+function onClickButtonSearch(event) {
+  event.preventDefault();
+  
+  newsApiService.query = inputUl.value
+  // console.log(newsApiService.query);
+  newsApiService.resetPage(); 
+  newsApiService.fetchImages().then(createImageList)
 }
 
-function onClickButton2() {
-  newsApiService.fetchImages();
+function onClickButton() {
+  newsApiService.fetchImages().then(createImageList);
 }
 
 function createImageList(images) {
