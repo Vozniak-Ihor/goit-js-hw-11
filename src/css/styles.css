@@ -29,6 +29,7 @@
     background-color: #0062cc;
   }
   
+
   .load-more{
     display: flex;
  margin-right: auto;
@@ -45,6 +46,11 @@
 
   .load-more:hover{
     background-color: #0062cc;
+  }
+
+
+  .load-more.is-hidden{
+    display: none;
   }
   /* Styles for image list */
   .ul {

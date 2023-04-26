@@ -1,28 +1,37 @@
-// import axios from 'axios';
-// import Notiflix from 'notiflix';
 import NewsApiService from './api-servece';
+import LoadMoreBnt from './loadMoreBnt'
 const ul = document.querySelector('.ul');
 const inputUl = document.querySelector('.input');
 const formEl = document.querySelector('.search-form');
-const buttonEl = document.querySelector('.load-more');
+// const buttonEl = document.querySelector('.load-more');
 
 const newsApiService = new NewsApiService();
+const loadMoreBnt = new LoadMoreBnt({
+  selector: '.load-more'
+})
 
 formEl.addEventListener('submit', onClickButtonSearch);
-buttonEl.addEventListener('click', onClickButton);
+loadMoreBnt.refs.buttonEl.addEventListener('click', onClickButton);
 
 function onClickButtonSearch(event) {
   event.preventDefault();
   
-
+ loadMoreBnt.show()
   newsApiService.query = inputUl.value
   // console.log(newsApiService.query);
-  newsApiService.resetPage(); 
-  newsApiService.fetchImages().then(createImageList)
+  newsApiService.resetPage();
+  loadMoreBnt.disabled() 
+  newsApiService.fetchImages().then(images =>{
+    createImageList(images)
+    loadMoreBnt.enable()})
 }
 
 function onClickButton() {
-  newsApiService.fetchImages().then(createImageList);
+  loadMoreBnt.disabled()
+  newsApiService.fetchImages().then(images =>{
+    createImageList(images)
+    loadMoreBnt.enable()
+  });
 }
 
 function createImageList(images) {
@@ -40,7 +49,7 @@ function createImageList(images) {
   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
   <div class="info">
     <p class="info-item">likes
-    
+
       <b>${likes}</b>
     </p>
     <p class="info-item">views
@@ -58,3 +67,4 @@ function createImageList(images) {
     .join('');
   ul.innerHTML = html;
 }
+
