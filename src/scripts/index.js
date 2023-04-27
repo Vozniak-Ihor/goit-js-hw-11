@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
-
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import NewsApiService from './api-servece';
 import LoadMoreBnt from './loadMoreBnt';
 const ul = document.querySelector('.ul');
@@ -32,12 +33,14 @@ function onClickButton() {
     createArticles(images);
     loadMoreBnt.show();
     loadMoreBnt.enable();
-    if (images.length <40) {    
-  loadMoreBnt.hide();
-  Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-} else {
-  loadMoreBnt.show();
-}
+    if (images.length < 40) {
+      loadMoreBnt.hide();
+      Notiflix.Notify.info(
+        "We're sorry, but you've reached the end of search results."
+      );
+    } else {
+      loadMoreBnt.show();
+    }
   });
 }
 
@@ -52,8 +55,8 @@ function createImageList(images) {
         views,
         comments,
         downloads,
-      }) => `<div class="photo-card">
-  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+      }) => `<div class="photo-card"> 
+<a class="gallery__link" href="${largeImageURL}"><img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy" height="180px" width="260px"/></a>
   <div class="info">
     <p class="info-item">likes: 
 
@@ -84,4 +87,4 @@ function clinCreateArticles() {
 
 // в кінці повідомити що більше немає фото
 
-
+var lightbox = new SimpleLightbox('.photo-card a', { /* options */ });
